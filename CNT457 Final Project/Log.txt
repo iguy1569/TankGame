@@ -1,0 +1,309 @@
+// Log Text File
+
+March 20, 2013
+	Ian
+	4 hours... collectively...
+	-Started building server ui and commenting the code
+	-built default tank class with a single derived class, all commented
+	-added ammo class with all ammo types (derived classes, no internal content (abstract))
+
+March 20, 2013
+	Chris
+	4 hours
+	-Client connection working with player name and tank selection (sends cClientConnect)
+	-Client send working (done with a 20ms timer)(sends cClientFrame)
+	-Client receive working (threaded with destacking)(receives cServerFrame and invokes Render)
+
+March 22, 2013
+	Ian
+	2 hours
+	-Worked on server side establishing a feed back bar for frames, bytes and fragments (global context)
+	-Worked on connection initialization for first connect, need to establish a check safe for guaranteed send
+	 as it relies on getting the connect frame to be added to sockets list.
+	- Initial connection now checks between connection frame vs game frame for decision making, no terrain yet
+	-started working on the timer for screen refreshes using a instructions queue from recieved. 
+	-will need a team meeting on best way of determining player recognized as server uses a list and client wants
+	 an array. 
+
+March 22, 2013
+	Dan
+	1.5 Hours
+	-Started construction of the cAmmo class. Finished the base class elements including the constructor.
+	-Need to still fill out function that does math on the Max Ammo Distance.
+	-Constructed the cSpecialItem class. Finished all elements including constructor.
+
+March 22, 2013
+	Chris
+	3 Minutes
+	-Converted 20ms send timer to send new frame every key-state update
+
+March 23, 2013
+	Ian
+	3.5 hours
+	-Created a method for handling tank movements and commented all neccesary items 
+	-Created a method for handling instruction intake and commented all neccesary items 
+	-Created a method for handling packaging of tank data for server frame send outs and commented all neccesary items 
+	-Created a method for handling sending of packets to clients and commented all neccesary items 
+	-IN THEORY, ready for a test run with client
+
+March 25, 2013
+	Ian
+	2 hours
+	-Revamped server to use a structure instead of key value pair nonsense
+	-Successfully connected client to server, now just working on rendering
+	-instructions to server are being interpreted and logged for debug purposes
+	-have noticed an interesting issue with render that requires attention
+
+March 25, 2013
+	Ian
+	1 hour
+	- managed to successully get render working
+	- changed client to use a single frame that is constantly reassigned when a new one arrives
+	- render now in a 20ms timer, this way the client still renders even if frames do not show up
+
+March 26, 2013
+	Ian
+	4 hours collective
+	- successfully added a terain and added an index to each tank to indicate who to render where
+	- managed to get one tank to run successfully, two tanks on a screen results with a tank getting wedged at
+	0,0 with no movement, on his screen he is moving and the other is not, seems like an issue updating enemy stats
+	- server appears to be working correctly although a bit laggy on connection, possibly my house
+	- started steps towards getting shots fired but was stalled by dumb 2 tank problem
+
+March 27, 2013
+	Ian
+	1 hours collective
+	- fixed issues with tanks not rendering correctly, now all frames identify correctly
+	- added index to tank frames to allow for one type of frame sendout, reduce packet issues
+	- added bullets to game, single type only, need to fix keyvalue pair type from float to type
+	by using a encryptor, type to enum, and decryptor 
+
+March 27, 2013
+	Dan
+	1.5 Hours
+	- Planned out how to determine ammo fire rates for slow and fast ammo types.
+	- Created properties that retrieves the values needed to assign ammo fire rates.
+	- edited the Slow and fast ammo types to assign a fire rate to the types.
+
+March 27, 2013
+	Ian
+	1 Hour
+	- Created static class for Ammo assembly inorder to convert type to int then back again, reducing packet size
+	- worked with dan creating firerate method from server, without needing to inform the client, crafty
+	- fixed issue with loading a tank on client side by adding a reduced funtion version constructor, fixed bullet offset issue
+	
+March 28, 2013
+	Ian
+	5 Hours
+	- solved issue around limiting connection to 4 players, with add ons on drop.
+	- added features to include multiple tank types including static methods used to encode and decode 
+	on client and server
+	- created border, and obstacles for game elements
+	- working on regions and hit detection, regions do work but do not allow for much leway, will have to
+	reconsider approach used, such as after region check, possible creation of new item instance
+
+March 29, 2013
+	Ian
+	3 Hours
+	- started process of adding multiple ammo types to the game, fast ammo appears, to be working, slow is now broken
+	offsets are also a fair bit off due to loading wrong constructor, must create dual constructor.
+	- will have to refix ammo types and verify that the correct calls are made, will also have to create ammo toggles.
+
+March 30, 2013
+	Ian
+	3 hours
+	- created ammo collision and presets for adding to scoreboard
+	- added life meter both for enemies and main player
+	- bullet contact deducts life from opposing player
+	- created region detection between tanks to not allow overlap, now must figure out how to determine how damage will
+	be distributed
+
+March 31, 2013
+	Ian
+	3 Hours
+	- created toggle for secondary and primary ammo as well as different ammo looks
+	- reset damage rates to be a bit more balanced
+	- widened the turret and base to allow for better detailed bullets
+	- created speed offset to manipulate ammo distance and speed if shot while moving
+	- added radar to primary screen, 
+
+
+April 1, 2013
+	Ian
+	3 hours collective
+	- solved toggle issue with chris by adding it to frame recieve with an individually sent frame type
+	- edited each tank to have line outline (for clarity)
+	- having issue with region detection (inch up methods dont appear to work correctly, as they dont touch in game but are
+	interpreted as intersecting), will have to look deeper >>>>>>> .r370
+
+April 1, 2013
+	Dan
+	1.5 Hours
+	- created the 4th tank, worked on getting the turret to function properly on it
+	- worked on health and speed and turret speed to make tank unique
+	- fixed up some visuals to determine forward direct of the alien space ship tank
+
+April 3, 2013
+	Chris
+	1 Hour
+	- redid the graphics for tank 2 to make hit-detection easier
+	- worked on client stats screen to be displayed upon death
+
+April 3, 2013
+	Dan
+	1 Hour
+	- created the cOilSlick class which is a derived class from the cSpecialItem class
+	- the position of the oil slick will be randomly generated in a +/- 4 pixal range from the position of the tank
+	**NOTE: Still need to test implimentation of the oil slick
+
+April 3, 2013
+	Ian
+	5 hours
+	- successfully implemenented the scoreboard for the tank game as well as the repawn of the tank on death.
+	- built the basic framework to indicate that the tank is imobilized and will need to add rendering functions to show death
+	- tweaked tank 4 to be a bit more detailed
+	- still need to solve issue with tank on tank collision
+
+April 4, 2013
+	Ian 
+	5 Hours
+	- successfully added both sepecial item implenetations, including arm times, durations, damage toggles, refresh allowance
+	- added smoke to tanks that have been blown up to indicate player is in score menu
+	- 
+April 5, 2013
+	Chris, Dan, Ian
+	2 Hours
+	- successfully debugged the hit detection
+
+April 5, 2013
+	Ian
+	Addition 2 hours
+	- Added  bullet obstacle detection
+	- refined a fair amount of code to be simpler and shorter, reduced redundancy
+	- added turret restrictions on obstacles
+
+April 8, 2013
+	Ian, Chris
+	2 hours
+	- Added frame for determining shot countdown timer back from server to client
+	- polished up borders, and made slow ammo infinite (map width range)
+
+April 10, 2013
+	Chris
+	2 hours
+	- Created new project for 3D client
+	- Prepared 3D client for rendering (through separate functions per gamestate
+	- Setup 3D client for server connection
+	- Setup 3D client for server receive (may need modifications for 3D)
+	- Prepared 3D client for key events (currently no keys processed)
+
+April 10, 2013
+	Dan, Ian
+	2 Hours
+	-Debugging lag issue and 3rd and 4th player connections, still not working
+
+April 11, 2013
+	Chris
+	1 hour
+	- Setup rendering for primary tank (top down. Needs mesh)
+	- 3DClient able to connect to server (with 2DClient), send and receive all data
+April 12, 2013
+	Chris
+	2 hours
+	- Establiched terrain for 3D client (must be properly scaled and rotated)
+
+April 12, 2013
+	Dan, Ian
+	2 hours
+	-Debugging connection lag and crash for 3rd and 4th player, still not working=======
+
+April 14, 2013 
+	Ian
+	4 hours collective
+	- solved server issue, turned out to be a memeorystream reallocation error
+	- solved turret region check issue, turned out to have wrong angle variable used for check 
+
+April 15, 2013
+	Chris
+	- Got 3D tank movement working properly
+
+April 15, 2013
+	Ian 
+	8 hours collective
+	- completed help menu show on 2d client with Dan 
+	- revamped 3d and had to figure out the math of getting the map to stop being a mirror of the client
+
+April 17, 2013
+	Chris, Dan, Ian
+	2 hours
+	- Performed final debugging on 2D client
+	- Began final commenting and code cleanup
+	- In the ServerForm the support_function region still needs to be completed. Approx half way complete
+
+April 18, 2013
+	Ian
+	4 hours
+	- Tidied up 3d component and updated meshes with better textures
+	- Added radar and shot reload time to hud as wel as death table to 3d
+
+April 19, 2013
+	Ian
+	3 hours collective
+	- achieved checkoff requirement, version is final
+	- updated commenting and verified all sections covered properly, commenting finished
+
+	************************************************************************************************************************
+
+	GROUP REPORT SECTION
+	------------------------------------
+
+
+	1.0 Introduction
+	-----------------------
+		Upon first meeting we started our planning stages for our tank game. The requirments were clear and we met in hopes of 
+	creating a unique, smooth running and overall fun tank game that we would potentially want to play at home. In our beginning
+	planning stages we were hoping to create a game that had a space theme to it similar to how Star Fox 64 for the Nintendo 64
+	was made. We soon realized this would be much more difficult than expected as well as the implimentation of this when trying
+	to create the 3D model would be near impossible. Time was an issue when dealing with terrain elevation because we simply did
+	not	have the time to work on the math to make it functional in our program. Once we fully realized that this idea could not
+	be used	we switched to a theme of having mutiple tank types with different attributes on a grass or field type of terrain. Our
+	goal was to incorporate a Tank, Ammo, Terrain and Obstacle classes that would have derived classes off of them to give mutiple
+	options towards each.  
+
+
+
+	2.0 ACTION ITEMS
+	-----------------------
+	-- discuss planning stages, our pseudo code
+	-- discuss order we started building
+	-- discuss theory in how we wanted to impliment certain parts
+		-- discuss in which order we implemented processes
+
+
+	3.0 PROBLEMS DISCOVERED
+	-----------------------
+
+	-- discuss our region issue, debugging steps we took, how it demoralized us. 
+	-- discuss server lag issues
+
+
+	4.0 SOLUTIONS DISCOVERED
+	-----------------------
+
+	-- what we learned about the initialization of regions, how we fixed our region errors
+	-- memory stream reallocation for the server lag/non responsive fix
+
+
+	5.0 CONCLUSION
+	-----------------------
+
+	-- discuss how our group worked together(overall very good)
+		-- what we learned about utilizing the strengths of each member to have a successful outcome
+		-- what we learned about working in groups
+		-- how we communicated relatively well
+			-- almost always collectivally told eachother what was going on outside of what was written in the log to bring clarity
+			   to the subject being discussed 
+
+
+
+

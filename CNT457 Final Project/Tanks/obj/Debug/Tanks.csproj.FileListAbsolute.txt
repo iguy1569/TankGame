@@ -1,0 +1,7 @@
+E:\Tank Game Final Project\CNT457 Final Project\Tanks\bin\Debug\Tanks.dll
+E:\Tank Game Final Project\CNT457 Final Project\Tanks\bin\Debug\Tanks.pdb
+E:\Tank Game Final Project\CNT457 Final Project\Tanks\bin\Debug\Ammo.dll
+E:\Tank Game Final Project\CNT457 Final Project\Tanks\bin\Debug\Ammo.pdb
+E:\Tank Game Final Project\CNT457 Final Project\Tanks\obj\Debug\ResolveAssemblyReference.cache
+E:\Tank Game Final Project\CNT457 Final Project\Tanks\obj\Debug\Tanks.dll
+E:\Tank Game Final Project\CNT457 Final Project\Tanks\obj\Debug\Tanks.pdb

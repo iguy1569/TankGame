@@ -1,0 +1,5 @@
+E:\Tank Game Final Project\CNT457 Final Project\ClientFrame\bin\Debug\ClientFrame.dll
+E:\Tank Game Final Project\CNT457 Final Project\ClientFrame\bin\Debug\ClientFrame.pdb
+E:\Tank Game Final Project\CNT457 Final Project\ClientFrame\obj\Debug\ResolveAssemblyReference.cache
+E:\Tank Game Final Project\CNT457 Final Project\ClientFrame\obj\Debug\ClientFrame.dll
+E:\Tank Game Final Project\CNT457 Final Project\ClientFrame\obj\Debug\ClientFrame.pdb
